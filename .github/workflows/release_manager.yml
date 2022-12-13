@@ -1,11 +1,6 @@
 name: release_manager
 
-on:
-  workflow_call:
-    inputs:
-      pr_number:
-        required: true
-        type: number
+on: push
 
 jobs:
   processing_release_manager:
