@@ -10,4 +10,4 @@ jobs:
     - id: step1
       name: Identify the newly added file 
       run: |
-        echo "This is testing GitHub Workflow"
+        echo "Repo name is ${{ github.repository }} and the PR number is ${{ github.event.pull_request.number }}"
