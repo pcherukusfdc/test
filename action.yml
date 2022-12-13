@@ -4,7 +4,7 @@ inputs:
   repo_name:
     required: true
     type: string
-  pr_number:
+  pr_num:
     required: true
     type: number
 runs:
@@ -14,4 +14,4 @@ runs:
     shell: bash
     name: Releasing the tags 
     run: |
-      ~/release_manager.sh ${repo_name} ${pr_number}
+      ~/release_manager.sh ${repo_name} ${pr_num}
