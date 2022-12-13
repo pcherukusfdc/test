@@ -14,3 +14,6 @@ jobs:
       name: Identify the newly added file 
       run: |
         echo "Repo name is ${{ github.repository }} and the PR number is ${{ github.event.pull_request.number }}"
+        URL="https://api.github.com/repos/${{ inputs.repo_name }}/pulls/${{ inputs.pr_number }}/files"
+        FILES=$(curl -s -X GET -H "Authorization: Bearer $(cat ~/.gh_secrets)" -G $URL | jq -r '.[] | .filename')
+        echo ${FILES}
