@@ -1,0 +1,9 @@
+name: release_manager
+
+
+jobs:
+  processing_release_manager:
+    name: collecting_release_version
+    runs-on: [ self-hosted, linux, release_manager ]
+    run: |
+      echo "This is testing GitHub Workflow"
