@@ -1,0 +1,17 @@
+name: 'Action to execute shell script'
+description: 'pull the changes as per the tags'
+inputs:
+  repo_name:
+    required: true
+    type: string
+  pr_number:
+    required: true
+    type: number
+runs:
+  using: "composite"
+  steps:
+  - id: step1
+    shell: bash
+    name: Releasing the tags 
+    run: |
+      ~/release_manager.sh ${repo_name} ${pr_number}
