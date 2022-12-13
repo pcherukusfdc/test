@@ -28,13 +28,13 @@ jobs:
         #gh repo clone "https://github.com/${{ github.repository }}"
     - id: step2
       name: PR approve and merge 
-      
+  processing_release_manager2:
+    needs: processing_release_manager 
+    runs-on: [ self-hosted, linux, release_manager ]
+    steps:
     - id: step3
       name: call actions 
       uses: pcherukusfdc/test@main
       with:
         repo_name: '${{ github.repository }}'
         pr_num: '${{ github.event.pull_request.number }}'
-    
-    
-        
