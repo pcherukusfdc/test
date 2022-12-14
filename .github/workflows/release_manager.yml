@@ -1,38 +1,14 @@
-name: release_manager
+name: Puppet_code_deployment
 
-on: 
+on:
   pull_request:
     types:
       - opened
-
+      
 jobs:
-  processing_release_manager:
-    name: collecting_release_version
-    runs-on: [ self-hosted, linux, release_manager ]
-    steps:
-    - id: step1
-      name: Identify the newly added file 
-      run: |
-        echo "Repo name is ${{ github.repository }} and the PR number is ${{ github.event.pull_request.number }}"
-        #URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"
-        #FILES=$(curl -s -X GET -H "Authorization: Bearer $(cat ~/.gh_secrets)" -G $URL | jq -r '.[] | .filename')
-        org_name=$(echo ${{ github.repository }} | cut -d'/' -f1)
-        repo_name=$(echo ${{ github.repository }} | cut -d'/' -f2)
-        pr_num=${{ github.event.pull_request.number }}
-        
-        #cd git
-        #if [[ -d $repo_name ]] ; then rm -rf $repo_name ; fi
-        #gh auth login --with-token < ~/.gh_secrets
-        #echo ""
-        #echo "Cloing the repository"
-        #gh repo clone "https://github.com/${{ github.repository }}"
-  processing_release_manager2:
-    needs: processing_release_manager 
-    runs-on: [ self-hosted, linux, release_manager ]
-    steps:
-    - id: step3
-      name: call actions 
-      uses: pcherukusfdc/test@main
-      with:
-        repo_name: '${{ github.repository }}'
-        pr_num: '${{ github.event.pull_request.number }}'
+  call-workflow:
+    uses: pcherukusfdc/release_manager/.github/workflows/release_manager.yml@main
+    with:
+      repo_name: ${{ github.repository }}
+      pr_number: ${{ github.event.pull_request.number }}
+    secrets: inherit
