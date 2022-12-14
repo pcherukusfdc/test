@@ -6,4 +6,7 @@ class test {
   
   notify { 'This is second resource':
   }
+  
+  notify { 'This is third resource':
+  }
 }
