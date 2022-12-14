@@ -3,4 +3,7 @@
 class test {
   notify { 'This is test module':
   }
+  
+  notify { 'This is second resource':
+  }
 }
