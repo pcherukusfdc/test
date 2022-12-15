@@ -9,4 +9,7 @@ class test {
   
   notify { 'This is third resource':
   }
+
+  notify { 'This is forth resource':
+  }
 }
